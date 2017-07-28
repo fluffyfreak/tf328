@@ -57,7 +57,7 @@ The TF328 CD32 Ram + IDE Board
 | IC4 | IS41C16100C | IS41C16100C | TSOP44(50)-II |   |
 | IC5 | LM1117-3.3 | V_REG_LM1117SOT223 | SOT223 | Voltage Regulator LM1117 |
 | IC9 | 74LVC1G17DBV | 74LVC1G17DBV | SOT23-5 | Single Schmitt-Trigger Buffer (Optional)| 
-| JMP | Optional | JUMPER-2PTH | 1X02 | Jumper | 
+| JMP | Optional | JUMPER-2PTH | 1X02 | NMI Jumper | 
 | JP1 | CLOCKSEL | JUMPER-3PTH | 1X03 |        | 
 | JTAG | JTAG | HEADER-1X6ROUND | 1X06_ROUND | PIN HEADER | 
 | PWR1 | EXT5V | JUMPER-2PTH | 1X02 | Jumper | 
