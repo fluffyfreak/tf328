@@ -10,6 +10,20 @@ The CPLDs Required are 1 x XC9572XL-10VQ64 and 1 x XC9536XL-10VQG44C.  10ns "Com
 
 Everything in this repository is released under the GNU GPLv2. You may create or base commercial PCBs from the work in this repository but you must make the sources for all derivative work available. I have noticed some forks have removed copyright notices. This is a breach of the GPL.
 
+## Board Options
+
+### Clock Buffer 
+
+The clock buffer is a stabilty modification I added to buffer the clock due to slow rise times observed on other Amiga Hardware. It may not be required at all. If you decide not to add the clock buffer then you should jumper the middle pin of the CLOCKSEL jumper to the pin nearest the edge connector. If you wish to use the buffered clock you need to add IC9 and jumper the middle pin to the position nearest the IDE connector. If you wish to disable the board remove the jumper entirely.
+
+### External Power
+
+Jumper PWR1 is intended for use when bringing up the board so that the CPLDs can be programmed without inserting the card. It is not required after this unless you wish to use it to power other devices. 
+
+### JMP Feature 
+
+Jumper JMP is intended to trigger an NMI. This works via the MUXCPLD which detects the external pin being pulled HIGH and will pull IPL0-2 low until released. This feature is done synchronously to prevent glitches. It is intended for use with HRTMon. 
+
 ## Firmware / Requirements
 
   * Xilinx ISE, 14.7 (the final version - other versions may work but this is the one I support)
