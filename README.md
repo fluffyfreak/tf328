@@ -25,6 +25,8 @@ This project and all the files contained are released under the GNU GPLv2. If yo
 
 Completely untested board link.... use with caution!!!! Do not come crying to me if it didnt work!!
 
+http://dirtypcbs.com/store/designer/details/12476/4714/tf328-rev1-zip
+
 The TF328 CD32 Ram + IDE Board
 
 # Bill of Materials
