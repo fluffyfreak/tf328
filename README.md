@@ -10,6 +10,20 @@ The CPLDs Required are 1 x XC9572XL-10VQ64 and 1 x XC9536XL-10VQG44C.  10ns "Com
 
 Everything in this repository is released under the GNU GPLv2. You may create or base commercial PCBs from the work in this repository but you must make the sources for all derivative work available. I have noticed some forks have removed copyright notices. This is a breach of the GPL.
 
+## Board Options
+
+### Clock Buffer 
+
+The clock buffer is a stabilty modification I added to buffer the clock due to slow rise times observed on other Amiga Hardware. It may not be required at all. If you decide not to add the clock buffer then you should jumper the middle pin of the CLOCKSEL jumper to the pin nearest the edge connector. If you wish to use the buffered clock you need to add IC9 and jumper the middle pin to the position nearest the IDE connector. If you wish to disable the board remove the jumper entirely.
+
+### External Power
+
+Jumper PWR1 is intended for use when bringing up the board so that the CPLDs can be programmed without inserting the card. It is not required after this unless you wish to use it to power other devices. 
+
+### JMP Feature 
+
+Jumper JMP is intended to trigger an NMI. This works via the MUXCPLD which detects the external pin being pulled HIGH and will pull IPL0-2 low until released. This feature is done synchronously to prevent glitches. It is intended for use with HRTMon. 
+
 ## Firmware / Requirements
 
   * Xilinx ISE, 14.7 (the final version - other versions may work but this is the one I support)
@@ -24,6 +38,8 @@ This project and all the files contained are released under the GNU GPLv2. If yo
 ## The TerribleFore 328 board (Revision 1)
 
 Completely untested board link.... use with caution!!!! Do not come crying to me if it didnt work!!
+
+http://dirtypcbs.com/store/designer/details/12476/4714/tf328-rev1-zip
 
 The TF328 CD32 Ram + IDE Board
 
@@ -49,14 +65,13 @@ The TF328 CD32 Ram + IDE Board
 | C14 | 100nF | CAP_CERAMIC1206 | 1206 | Ceramic Capacitors | 
 | C15 | 100nF | CAP_CERAMIC1206 | 1206 | Ceramic Capacitors | 
 | C16 | 1uF | CC0603 | C0603 | CAPACITOR, European symbol | 
-| CONN1 | MCA_CONN_182 | MCA_CONN_182 | MCA_CONN_182 |   |
 | IC1 | IS41C16100C | IS41C16100C | TSOP44(50)-II |   |
 | IC2 | IS41C16100C | IS41C16100C | TSOP44(50)-II |   |
 | IC3 | IS41C16100C | IS41C16100C | TSOP44(50)-II |   |
 | IC4 | IS41C16100C | IS41C16100C | TSOP44(50)-II |   |
 | IC5 | LM1117-3.3 | V_REG_LM1117SOT223 | SOT223 | Voltage Regulator LM1117 |
 | IC9 | 74LVC1G17DBV | 74LVC1G17DBV | SOT23-5 | Single Schmitt-Trigger Buffer (Optional)| 
-| JMP | Optional | JUMPER-2PTH | 1X02 | Jumper | 
+| JMP | Optional | JUMPER-2PTH | 1X02 | NMI Jumper | 
 | JP1 | CLOCKSEL | JUMPER-3PTH | 1X03 |        | 
 | JTAG | JTAG | HEADER-1X6ROUND | 1X06_ROUND | PIN HEADER | 
 | PWR1 | EXT5V | JUMPER-2PTH | 1X02 | Jumper | 
