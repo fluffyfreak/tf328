@@ -1,4 +1,6 @@
-# TF528 Revision 1
+# TF328 Revision 1
+
+An 8mb Fast RAM + IDE Board for the CD32.
 
 WARNING: This board is beta. It has not been verified at time of commiting. 
 
