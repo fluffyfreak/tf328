@@ -1,0 +1,70 @@
+# Copyright (C) 2016-2017, Stephen J. Leary
+# All rights reserved.
+#
+# This file is part of TF530 (Terrible Fire 030 Accelerator)
+#
+# TF530 is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# TF530 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with TF530. If not, see <http://www.gnu.org/licenses/>.
+
+NET "A<0>"      LOC="36";
+NET "A<1>"      LOC="35";
+NET "A<2>"      LOC="8";
+NET "A<3>"      LOC="6";
+NET "A<4>"      LOC="7";
+NET "A<5>"      LOC="34";
+NET "A<6>"      LOC="33";
+NET "A<12>"      LOC="32";
+NET "A<13>"      LOC="31";
+NET "A<15>"      LOC="25";
+NET "A<16>"      LOC="27";
+NET "A<17>"      LOC="24";
+NET "A<18>"      LOC="23";
+NET "A<19>"      LOC="22";
+NET "A<20>"      LOC="20";
+NET "A<21>"      LOC="19";
+NET "A<22>"      LOC="18";
+NET "A<23>"      LOC="17";
+NET "AS20"      LOC="43";
+NET "CAS<0>"      LOC="2";
+NET "CAS<1>"      LOC="1";
+NET "CAS<2>"      LOC="57";
+NET "CAS<3>"      LOC="56";
+NET "CLKCPU"      LOC="16";
+NET "D<0>"      LOC="59";
+NET "D<1>"      LOC="58";
+NET "D<2>"      LOC="60";
+NET "D<3>"      LOC="61";
+NET "D<4>"      LOC="11";
+NET "D<5>"      LOC="12";
+NET "D<6>"      LOC="13";
+NET "D<7>"      LOC="15";
+NET "DS20"      LOC="42";
+NET "DSACK<0>"      LOC="45";
+NET "DSACK<1>"      LOC="46";
+NET "IDECS<0>"      LOC="10";
+NET "IDECS<1>"      LOC="9";
+NET "IDEINT"      LOC="5";
+NET "INT2"      LOC="47";
+NET "IOR"      LOC="64";
+NET "IOW"      LOC="63";
+NET "PUNT"      LOC="4";
+NET "RAMOE"      LOC="52";
+NET "RAM_A<0>"      LOC="50";
+NET "RAM_A<1>"      LOC="49";
+NET "RAM_MUX"      LOC="38";
+NET "RAS<0>"      LOC="51";
+NET "RAS<1>"      LOC="48";
+NET "RESET"      LOC="62";
+NET "RW20"      LOC="44";
+NET "SIZ<0>"      LOC="40";
+NET "SIZ<1>"      LOC="39";

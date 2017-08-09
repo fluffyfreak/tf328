@@ -1,578 +1,578 @@
 Netlist
 
-Exported from tf328.sch at 28/07/2017 21:13
+Exported from tf328.brd at 07/08/2017 19:56
 
 EAGLE Version 8.2.2 Copyright (c) 1988-2017 Autodesk, Inc.
 
-Net        Part         Pad      Pin        Sheet
+Net        Part         Pad
 
-A0         CONN1        PIN38    A0         2
-           RAMCPLD      36       PB03/15    4
+A0         CONN1        PIN38
+           RAMCPLD      36
 
-A1         CONN1        PIN37    A1         2
-           RAMCPLD      35       PB03/14    4
+A1         CONN1        PIN37
+           RAMCPLD      35
 
-A2         CONN1        PIN36    A2         2
-           IDECONNECTOR 35       S          3
-           RAMCPLD      8        PB01/2     4
+A2         CONN1        PIN36
+           IDECONNECTOR 35
+           RAMCPLD      8
 
-A3         CONN1        PIN35    A3         2
-           IDECONNECTOR 33       S          3
-           MUXCPLD      22       PB01/13    1
-           RAMCPLD      6        PB02/15    4
+A3         CONN1        PIN35
+           IDECONNECTOR 33
+           MUXCPLD      22
+           RAMCPLD      6
 
-A4         CONN1        PIN34    A4         2
-           IDECONNECTOR 36       S          3
-           MUXCPLD      21       PB01/14    1
-           RAMCPLD      7        PB02/17    4
+A4         CONN1        PIN34
+           IDECONNECTOR 36
+           MUXCPLD      21
+           RAMCPLD      7
 
-A5         CONN1        PIN33    A5         2
-           MUXCPLD      20       PB01/15    1
-           RAMCPLD      34       PB03/6     4
+A5         CONN1        PIN33
+           MUXCPLD      20
+           RAMCPLD      34
 
-A6         CONN1        PIN32    A6         2
-           MUXCPLD      19       PB01/16    1
-           RAMCPLD      33       PB03/11    4
+A6         CONN1        PIN32
+           MUXCPLD      19
+           RAMCPLD      33
 
-A7         CONN1        PIN31    A7         2
-           MUXCPLD      18       PB00/16    1
+A7         CONN1        PIN31
+           MUXCPLD      18
 
-A8         CONN1        PIN28    A8         2
-           MUXCPLD      16       PB00/15    1
+A8         CONN1        PIN28
+           MUXCPLD      16
 
-A9         CONN1        PIN27    A9         2
-           MUXCPLD      14       PB00/14    1
+A9         CONN1        PIN27
+           MUXCPLD      14
 
-A10        CONN1        PIN26    A10        2
-           MUXCPLD      13       PB00/13    1
+A10        CONN1        PIN26
+           MUXCPLD      13
 
-A11        CONN1        PIN25    A11        2
-           MUXCPLD      12       PB00/12    1
+A11        CONN1        PIN25
+           MUXCPLD      12
 
-A12        CONN1        PIN24    A12        2
-           MUXCPLD      8        PB00/11    1
-           RAMCPLD      32       PB03/4     4
+A12        CONN1        PIN24
+           MUXCPLD      8
+           RAMCPLD      32
 
-A13        CONN1        PIN23    A13        2
-           MUXCPLD      6        PB00/09    1
-           RAMCPLD      31       PB03/3     4
+A13        CONN1        PIN23
+           MUXCPLD      6
+           RAMCPLD      31
 
-A14        CONN1        PIN22    A14        2
-           MUXCPLD      7        PB00/10    1
+A14        CONN1        PIN22
+           MUXCPLD      7
 
-A15        CONN1        PIN21    A15        2
-           MUXCPLD      5        PB00/08    1
-           RAMCPLD      25       PB03/8     4
+A15        CONN1        PIN21
+           MUXCPLD      5
+           RAMCPLD      25
 
-A16        CONN1        PIN18    A16        2
-           MUXCPLD      3        PB00/07    1
-           RAMCPLD      27       PB03/9     4
+A16        CONN1        PIN18
+           MUXCPLD      3
+           RAMCPLD      27
 
-A17        CONN1        PIN17    A17        2
-           MUXCPLD      2        PB00/05    1
-           RAMCPLD      24       PB03/5     4
+A17        CONN1        PIN17
+           MUXCPLD      2
+           RAMCPLD      24
 
-A18        CONN1        PIN16    A18        2
-           MUXCPLD      1        PB00/06    1
-           RAMCPLD      23       PB01/12    4
+A18        CONN1        PIN16
+           MUXCPLD      1
+           RAMCPLD      23
 
-A19        CONN1        PIN15    A19        2
-           MUXCPLD      43       PB00/02    1
-           RAMCPLD      22       PB03/2     4
+A19        CONN1        PIN15
+           MUXCPLD      43
+           RAMCPLD      22
 
-A20        CONN1        PIN14    A20        2
-           RAMCPLD      20       PB01/17    4
+A20        CONN1        PIN14
+           RAMCPLD      20
 
-A21        CONN1        PIN13    A21        2
-           RAMCPLD      19       PB01/15    4
+A21        CONN1        PIN13
+           RAMCPLD      19
 
-A22        CONN1        PIN12    A22        2
-           RAMCPLD      18       PB01/10    4
+A22        CONN1        PIN12
+           RAMCPLD      18
 
-A23        CONN1        PIN11    A23        2
-           RAMCPLD      17       PB01/14    4
+A23        CONN1        PIN11
+           RAMCPLD      17
 
-AGND       CONN1        PIN177   AGND       2
+AGND       CONN1        PIN177
 
-AS20       CONN1        PIN91    !AS        2
-           RAMCPLD      43       PB04/2     4
+AS20       CONN1        PIN91
+           RAMCPLD      43
 
-AVEC       CONN1        PIN96    !AVEC      2
+AVEC       CONN1        PIN96
 
-BERR       CONN1        PIN94    !BERR      2
+BERR       CONN1        PIN94
 
-CAS0       IC1          32       !LCAS      1
-           IC3          32       !LCAS      1
-           RAMCPLD      2        PB02/11    4
+CAS0       IC1          32
+           IC3          32
+           RAMCPLD      2
 
-CAS1       IC1          31       !UCAS      1
-           IC3          31       !UCAS      1
-           RAMCPLD      1        PB02/10    4
+CAS1       IC1          31
+           IC3          31
+           RAMCPLD      1
 
-CAS2       IC2          32       !LCAS      1
-           IC4          32       !LCAS      1
-           RAMCPLD      57       PB04/17    4
+CAS2       IC2          32
+           IC4          32
+           RAMCPLD      57
 
-CAS3       IC2          31       !UCAS      1
-           IC4          31       !UCAS      1
-           RAMCPLD      56       PB04/15    4
+CAS3       IC2          31
+           IC4          31
+           RAMCPLD      56
 
-CFGIN      CONN1        PIN134   !CONFIG_IN 2
+CFGIN      CONN1        PIN134
 
-CFGOUT     CONN1        PIN133   !CONFIG_OUT 2
+CFGOUT     CONN1        PIN133
 
-CLKCPU     CONN1        PIN99    CPUCLK_A   2
-           IC9          2        I          4
-           JP1          1        1          4
+CLKCPU     CONN1        PIN99
+           IC9          2
+           JP1          1
 
-CLKCPU_INT JP1          2        2          4
-           MUXCPLD      44       PB00/04    1
-           RAMCPLD      16       GCLK2      4
+CLKCPU_INT JP1          2
+           MUXCPLD      44
+           RAMCPLD      16
 
-CLK_CLEAN  IC9          4        O          4
-           JP1          3        3          4
+CLK_CLEAN  IC9          4
+           JP1          3
 
-D0         CONN1        PIN78    D0         2
-           IC1          2        I/O0       1
-           IC3          2        I/O0       1
-
-D1         CONN1        PIN77    D1         2
-           IC1          3        I/O1       1
-           IC3          3        I/O1       1
-
-D2         CONN1        PIN76    D2         2
-           IC1          4        I/O2       1
-           IC3          4        I/O2       1
-
-D3         CONN1        PIN75    D3         2
-           IC1          5        I/O3       1
-           IC3          5        I/O3       1
-
-D4         CONN1        PIN74    D4         2
-           IC1          7        I/O4       1
-           IC3          7        I/O4       1
-
-D5         CONN1        PIN73    D5         2
-           IC1          8        I/O5       1
-           IC3          8        I/O5       1
-
-D6         CONN1        PIN72    D6         2
-           IC1          9        I/O6       1
-           IC3          9        I/O6       1
-
-D7         CONN1        PIN71    D7         2
-           IC1          10       I/O7       1
-           IC3          10       I/O7       1
-
-D8         CONN1        PIN68    D8         2
-           IC1          35       I/O8       1
-           IC3          35       I/O8       1
-
-D9         CONN1        PIN67    D9         2
-           IC1          36       I/O9       1
-           IC3          36       I/O9       1
-
-D10        CONN1        PIN66    D10        2
-           IC1          37       I/O10      1
-           IC3          37       I/O10      1
-
-D11        CONN1        PIN65    D11        2
-           IC1          38       I/O11      1
-           IC3          38       I/O11      1
-
-D12        CONN1        PIN64    D12        2
-           IC1          40       I/O12      1
-           IC3          40       I/O12      1
-
-D13        CONN1        PIN63    D13        2
-           IC1          41       I/O13      1
-           IC3          41       I/O13      1
-
-D14        CONN1        PIN62    D14        2
-           IC1          42       I/O14      1
-           IC3          42       I/O14      1
-
-D15        CONN1        PIN61    D15        2
-           IC1          43       I/O15      1
-           IC3          43       I/O15      1
-
-D16        CONN1        PIN58    D16        2
-           IC2          2        I/O0       1
-           IC4          2        I/O0       1
-           IDECONNECTOR 4        S          3
-
-D17        CONN1        PIN57    D17        2
-           IC2          3        I/O1       1
-           IC4          3        I/O1       1
-           IDECONNECTOR 6        S          3
-
-D18        CONN1        PIN56    D18        2
-           IC2          4        I/O2       1
-           IC4          4        I/O2       1
-           IDECONNECTOR 8        S          3
-
-D19        CONN1        PIN55    D19        2
-           IC2          5        I/O3       1
-           IC4          5        I/O3       1
-           IDECONNECTOR 10       S          3
-
-D20        CONN1        PIN54    D20        2
-           IC2          7        I/O4       1
-           IC4          7        I/O4       1
-           IDECONNECTOR 12       S          3
-
-D21        CONN1        PIN53    D21        2
-           IC2          8        I/O5       1
-           IC4          8        I/O5       1
-           IDECONNECTOR 14       S          3
-
-D22        CONN1        PIN52    D22        2
-           IC2          9        I/O6       1
-           IC4          9        I/O6       1
-           IDECONNECTOR 16       S          3
-
-D23        CONN1        PIN51    D23        2
-           IC2          10       I/O7       1
-           IC4          10       I/O7       1
-           IDECONNECTOR 18       S          3
-
-D24        CONN1        PIN48    D24        2
-           IC2          43       I/O15      1
-           IC4          43       I/O15      1
-           IDECONNECTOR 17       S          3
-           RAMCPLD      59       PB02/4     4
-
-D25        CONN1        PIN47    D25        2
-           IC2          42       I/O14      1
-           IC4          42       I/O14      1
-           IDECONNECTOR 15       S          3
-           RAMCPLD      58       PB02/3     4
-
-D26        CONN1        PIN46    D26        2
-           IC2          41       I/O13      1
-           IC4          41       I/O13      1
-           IDECONNECTOR 13       S          3
-           RAMCPLD      60       PB02/2     4
-
-D27        CONN1        PIN45    D27        2
-           IC2          40       I/O12      1
-           IC4          40       I/O12      1
-           IDECONNECTOR 11       S          3
-           RAMCPLD      61       PB02/5     4
-
-D28        CONN1        PIN44    D28        2
-           IC2          38       I/O11      1
-           IC4          38       I/O11      1
-           IDECONNECTOR 9        S          3
-           RAMCPLD      11       PB01/8     4
-
-D29        CONN1        PIN43    D29        2
-           IC2          37       I/O10      1
-           IC4          37       I/O10      1
-           IDECONNECTOR 7        S          3
-           RAMCPLD      12       PB01/3     4
-
-D30        CONN1        PIN42    D30        2
-           IC2          36       I/O9       1
-           IC4          36       I/O9       1
-           IDECONNECTOR 5        S          3
-           RAMCPLD      13       PB01/4     4
-
-D31        CONN1        PIN41    D31        2
-           IC2          35       I/O8       1
-           IC4          35       I/O8       1
-           IDECONNECTOR 3        S          3
-           RAMCPLD      15       GCLK1      4
-
-DS20       CONN1        PIN92    !DS        2
-           RAMCPLD      42       PB03/16    4
-
-DSACK0     CONN1        PIN98    !DSACK0    2
-           RAMCPLD      45       PB04/8     4
-
-DSACK1     CONN1        PIN97    !DSACK1    2
-           RAMCPLD      46       PB04/3     4
-
-FC0        CONN1        PIN105   FC0        2
-
-FC1        CONN1        PIN104   FC1        2
-
-FC2        CONN1        PIN103   FC2        2
-
-FIRE0      CONN1        PIN124   !FIRE1     2
-
-FIRE1      CONN1        PIN123   !FIRE0     2
-
-GND        C1           2        P$2        4
-           C10          2        P$2        3
-           C11          2        P$2        3
-           C12          2        P$2        4
-           C13          2        P$2        3
-           C14          2        P$2        3
-           C15          2        P$2        3
-           C16          2        2          1
-           C2           2        P$2        4
-           C3           2        P$2        3
-           C4           2        P$2        3
-           C5           2        P$2        3
-           C6           2        P$2        3
-           C7           2        P$2        4
-           C8           2        P$2        3
-           C9           2        P$2        3
-           CONN1        PIN101   DGND       2
-           CONN1        PIN135   DGND       2
-           CONN1        PIN137   DGND       2
-           CONN1        PIN145   DGND       2
-           CONN1        PIN155   DGND       2
-           CONN1        PIN175   DGND       2
-           CONN1        PIN19    DGND       2
-           CONN1        PIN29    DGND       2
-           CONN1        PIN39    DGND       2
-           CONN1        PIN49    DGND       2
-           CONN1        PIN59    DGND       2
-           CONN1        PIN69    DGND       2
-           CONN1        PIN79    DGND       2
-           CONN1        PIN9     DGND       2
-           IC1          23       GND        1
-           IC1          39       GND-1      1
-           IC1          44       GND-2      1
-           IC2          23       GND        1
-           IC2          39       GND-1      1
-           IC2          44       GND-2      1
-           IC3          23       GND        1
-           IC3          39       GND-1      1
-           IC3          44       GND-2      1
-           IC4          23       GND        1
-           IC4          39       GND-1      1
-           IC4          44       GND-2      1
-           IC5          1        ADJ        4
-           IC9          3        GND        * none *
-           IDECONNECTOR 19       S          3
-           IDECONNECTOR 2        S          3
-           IDECONNECTOR 22       S          3
-           IDECONNECTOR 24       S          3
-           IDECONNECTOR 26       S          3
-           IDECONNECTOR 30       S          3
-           IDECONNECTOR 40       S          3
-           IDECONNECTOR 43       S          3
-           IDECONNECTOR 44       S          3
-           JTAG         5        5          4
-           MUXCPLD      17       VSSINT     1
-           MUXCPLD      25       VSSIO      1
-           MUXCPLD      4        VSSIO      1
-           PWR1         1        1          4
-           R2           1        1          3
-           RAMCPLD      14       GND        4
-           RAMCPLD      21       GND        4
-           RAMCPLD      41       GND        4
-           RAMCPLD      54       GND        4
-
-IDECS0     IDECONNECTOR 37       S          3
-           RAMCPLD      10       PB01/6     4
-
-IDECS1     IDECONNECTOR 38       S          3
-           RAMCPLD      9        PB01/5     4
-
-IDEINT     IDECONNECTOR 31       S          3
-           R2           2        2          3
-           RAMCPLD      5        PB02/14    4
-
-IDELED     IDECONNECTOR 39       S          3
-
-IDEWAIT    IDECONNECTOR 27       S          3
-           R1           2        2          3
-
-INT2       CONN1        PIN119   !INT2      2
-           RAMCPLD      47       PB04/4     4
-
-INT6       CONN1        PIN120   !INT6      2
-
-IOR        IDECONNECTOR 25       S          3
-           RAMCPLD      64       PB02/9     4
-
-IOW        IDECONNECTOR 23       S          3
-           RAMCPLD      63       PB02/8     4
-
-IPL0       CONN1        PIN83    !IPL0      2
-           MUXCPLD      28       PB01/10    1
-
-IPL1       CONN1        PIN82    !IPL1      2
-           MUXCPLD      27       PB01/11    1
-
-IPL2       CONN1        PIN81    !IPL2      2
-           MUXCPLD      23       PB01/12    1
-
-JMP        JMP          2        2          1
-           MUXCPLD      39       PB01/00    1
-
-PUNT       CONN1        PIN117   !PUNT      2
-           RAMCPLD      4        PB02/12    4
-
-RAMOE      IC1          30       !OE        1
-           IC2          30       !OE        1
-           IC3          30       !OE        1
-           IC4          30       !OE        1
-           RAMCPLD      52       PB04/12    4
-
-RAM_A0     IC1          18       A0         1
-           IC2          18       A0         1
-           IC3          18       A0         1
-           IC4          18       A0         1
-           RAMCPLD      50       PB04/14    4
-
-RAM_A1     IC1          19       A1         1
-           IC2          19       A1         1
-           IC3          19       A1         1
-           IC4          19       A1         1
-           RAMCPLD      49       PB04/6     4
-
-RAM_A2     IC1          20       A2         1
-           IC2          20       A2         1
-           IC3          20       A2         1
-           IC4          20       A2         1
-           MUXCPLD      36       PB01/02    1
-
-RAM_A3     IC1          21       A3         1
-           IC2          21       A3         1
-           IC3          21       A3         1
-           IC4          21       A3         1
-           MUXCPLD      37       PB01/03    1
-
-RAM_A4     IC1          24       A4         1
-           IC2          24       A4         1
-           IC3          24       A4         1
-           IC4          24       A4         1
-           MUXCPLD      34       PB01/04    1
-
-RAM_A5     IC1          25       A5         1
-           IC2          25       A5         1
-           IC3          25       A5         1
-           IC4          25       A5         1
-           MUXCPLD      33       PB01/05    1
-
-RAM_A6     IC1          26       A6         1
-           IC2          26       A6         1
-           IC3          26       A6         1
-           IC4          26       A6         1
-           MUXCPLD      32       PB01/06    1
-
-RAM_A7     IC1          27       A7         1
-           IC2          27       A7         1
-           IC3          27       A7         1
-           IC4          27       A7         1
-           MUXCPLD      31       PB01/07    1
-
-RAM_A8     IC1          28       A8         1
-           IC2          28       A8         1
-           IC3          28       A8         1
-           IC4          28       A8         1
-           MUXCPLD      30       PB01/08    1
-
-RAM_A9     IC1          29       A9         1
-           IC2          29       A9         1
-           IC3          29       A9         1
-           IC4          29       A9         1
-           MUXCPLD      29       PB01/09    1
-
-RAM_MUX    MUXCPLD      38       PB01/01    1
-           RAMCPLD      38       PB03/17    4
-
-RAS0       IC1          15       !RAS       1
-           IC2          15       !RAS       1
-           RAMCPLD      51       PB04/10    4
-
-RAS1       IC3          15       !RAS       1
-           IC4          15       !RAS       1
-           RAMCPLD      48       PB04/11    4
-
-RESET      CONN1        PIN118   !RESET     2
-           IDECONNECTOR 1        S          3
-           RAMCPLD      62       PB02/6     4
-
-RW20       CONN1        PIN93    R/!W       2
-           IC1          14       !WE        1
-           IC2          14       !WE        1
-           IC3          14       !WE        1
-           IC4          14       !WE        1
-           RAMCPLD      44       PB04/5     4
-
-SIZ0       CONN1        PIN90    SIZE0      2
-           RAMCPLD      40       PB03/12    4
-
-SIZ1       CONN1        PIN89    SIZE1      2
-           RAMCPLD      39       PB03/10    4
-
-TCK        JTAG         4        4          4
-           MUXCPLD      11       TCK        1
-           RAMCPLD      30       TCK        4
-
-TDI        JTAG         2        2          4
-           RAMCPLD      28       TDI        4
-
-TDINT      MUXCPLD      9        TDI        1
-           RAMCPLD      53       TDO        4
-
-TDO        JTAG         3        3          4
-           MUXCPLD      24       TDO        1
-
-TMS        JTAG         1        1          4
-           MUXCPLD      10       TMS        1
-           RAMCPLD      29       TMS        4
-
-VCC        C10          1        P$1        3
-           C11          1        P$1        3
-           C13          1        P$1        3
-           C14          1        P$1        3
-           C15          1        P$1        3
-           C2           1        P$1        4
-           C3           1        P$1        3
-           C4           1        P$1        3
-           C5           1        P$1        3
-           C6           1        P$1        3
-           C8           1        P$1        3
-           C9           1        P$1        3
-           CONN1        PIN10    VCC        2
-           CONN1        PIN102   VCC        2
-           CONN1        PIN146   VCC        2
-           CONN1        PIN156   VCC        2
-           CONN1        PIN176   VCC        2
-           CONN1        PIN20    VCC        2
-           CONN1        PIN50    VCC        2
-           CONN1        PIN60    VCC        2
-           CONN1        PIN70    VCC        2
-           CONN1        PIN80    VCC        2
-           IC1          1        VDD        1
-           IC1          22       VDD-1      1
-           IC1          6        VDD-0      1
-           IC2          1        VDD        1
-           IC2          22       VDD-1      1
-           IC2          6        VDD-0      1
-           IC3          1        VDD        1
-           IC3          22       VDD-1      1
-           IC3          6        VDD-0      1
-           IC4          1        VDD        1
-           IC4          22       VDD-1      1
-           IC4          6        VDD-0      1
-           IC5          3        IN         4
-           IC9          5        VCC        * none *
-           IDECONNECTOR 41       S          3
-           IDECONNECTOR 42       S          3
-           PWR1         2        2          4
-           R1           1        1          3
-
-VCC33      C1           1        P$1        4
-           C12          1        P$1        4
-           C16          1        1          1
-           C7           1        P$1        4
-           IC5          2        OUT        4
-           IC5          4        OUT        4
-           JMP          1        1          1
-           JTAG         6        6          4
-           MUXCPLD      15       VCCINT     1
-           MUXCPLD      26       VCCIO      1
-           MUXCPLD      35       VCCINT/VPP 1
-           RAMCPLD      26       VCCIO      4
-           RAMCPLD      3        VCCINT     4
-           RAMCPLD      37       VCCINT/VPP 4
-           RAMCPLD      55       VCCIO      4
+D0         CONN1        PIN78
+           IC1          2
+           IC3          2
+
+D1         CONN1        PIN77
+           IC1          3
+           IC3          3
+
+D2         CONN1        PIN76
+           IC1          4
+           IC3          4
+
+D3         CONN1        PIN75
+           IC1          5
+           IC3          5
+
+D4         CONN1        PIN74
+           IC1          7
+           IC3          7
+
+D5         CONN1        PIN73
+           IC1          8
+           IC3          8
+
+D6         CONN1        PIN72
+           IC1          9
+           IC3          9
+
+D7         CONN1        PIN71
+           IC1          10
+           IC3          10
+
+D8         CONN1        PIN68
+           IC1          35
+           IC3          35
+
+D9         CONN1        PIN67
+           IC1          36
+           IC3          36
+
+D10        CONN1        PIN66
+           IC1          37
+           IC3          37
+
+D11        CONN1        PIN65
+           IC1          38
+           IC3          38
+
+D12        CONN1        PIN64
+           IC1          40
+           IC3          40
+
+D13        CONN1        PIN63
+           IC1          41
+           IC3          41
+
+D14        CONN1        PIN62
+           IC1          42
+           IC3          42
+
+D15        CONN1        PIN61
+           IC1          43
+           IC3          43
+
+D16        CONN1        PIN58
+           IC2          2
+           IC4          2
+           IDECONNECTOR 4
+
+D17        CONN1        PIN57
+           IC2          3
+           IC4          3
+           IDECONNECTOR 6
+
+D18        CONN1        PIN56
+           IC2          4
+           IC4          4
+           IDECONNECTOR 8
+
+D19        CONN1        PIN55
+           IC2          5
+           IC4          5
+           IDECONNECTOR 10
+
+D20        CONN1        PIN54
+           IC2          7
+           IC4          7
+           IDECONNECTOR 12
+
+D21        CONN1        PIN53
+           IC2          8
+           IC4          8
+           IDECONNECTOR 14
+
+D22        CONN1        PIN52
+           IC2          9
+           IC4          9
+           IDECONNECTOR 16
+
+D23        CONN1        PIN51
+           IC2          10
+           IC4          10
+           IDECONNECTOR 18
+
+D24        CONN1        PIN48
+           IC2          43
+           IC4          43
+           IDECONNECTOR 17
+           RAMCPLD      59
+
+D25        CONN1        PIN47
+           IC2          42
+           IC4          42
+           IDECONNECTOR 15
+           RAMCPLD      58
+
+D26        CONN1        PIN46
+           IC2          41
+           IC4          41
+           IDECONNECTOR 13
+           RAMCPLD      60
+
+D27        CONN1        PIN45
+           IC2          40
+           IC4          40
+           IDECONNECTOR 11
+           RAMCPLD      61
+
+D28        CONN1        PIN44
+           IC2          38
+           IC4          38
+           IDECONNECTOR 9
+           RAMCPLD      11
+
+D29        CONN1        PIN43
+           IC2          37
+           IC4          37
+           IDECONNECTOR 7
+           RAMCPLD      12
+
+D30        CONN1        PIN42
+           IC2          36
+           IC4          36
+           IDECONNECTOR 5
+           RAMCPLD      13
+
+D31        CONN1        PIN41
+           IC2          35
+           IC4          35
+           IDECONNECTOR 3
+           RAMCPLD      15
+
+DS20       CONN1        PIN92
+           RAMCPLD      42
+
+DSACK0     CONN1        PIN98
+           RAMCPLD      45
+
+DSACK1     CONN1        PIN97
+           RAMCPLD      46
+
+FC0        CONN1        PIN105
+
+FC1        CONN1        PIN104
+
+FC2        CONN1        PIN103
+
+FIRE0      CONN1        PIN124
+
+FIRE1      CONN1        PIN123
+
+GND        C1           2
+           C10          2
+           C11          2
+           C12          2
+           C13          2
+           C14          2
+           C15          2
+           C16          2
+           C2           2
+           C3           2
+           C4           2
+           C5           2
+           C6           2
+           C7           2
+           C8           2
+           C9           2
+           CONN1        PIN101
+           CONN1        PIN135
+           CONN1        PIN137
+           CONN1        PIN145
+           CONN1        PIN155
+           CONN1        PIN175
+           CONN1        PIN19
+           CONN1        PIN29
+           CONN1        PIN39
+           CONN1        PIN49
+           CONN1        PIN59
+           CONN1        PIN69
+           CONN1        PIN79
+           CONN1        PIN9
+           IC1          23
+           IC1          39
+           IC1          44
+           IC2          23
+           IC2          39
+           IC2          44
+           IC3          23
+           IC3          39
+           IC3          44
+           IC4          23
+           IC4          39
+           IC4          44
+           IC5          1
+           IC9          3
+           IDECONNECTOR 19
+           IDECONNECTOR 2
+           IDECONNECTOR 22
+           IDECONNECTOR 24
+           IDECONNECTOR 26
+           IDECONNECTOR 30
+           IDECONNECTOR 40
+           IDECONNECTOR 43
+           IDECONNECTOR 44
+           JTAG         5
+           MUXCPLD      17
+           MUXCPLD      25
+           MUXCPLD      4
+           PWR1         1
+           R2           1
+           RAMCPLD      14
+           RAMCPLD      21
+           RAMCPLD      41
+           RAMCPLD      54
+
+IDECS0     IDECONNECTOR 37
+           RAMCPLD      10
+
+IDECS1     IDECONNECTOR 38
+           RAMCPLD      9
+
+IDEINT     IDECONNECTOR 31
+           R2           2
+           RAMCPLD      5
+
+IDELED     IDECONNECTOR 39
+
+IDEWAIT    IDECONNECTOR 27
+           R1           2
+
+INT2       CONN1        PIN119
+           RAMCPLD      47
+
+INT6       CONN1        PIN120
+
+IOR        IDECONNECTOR 25
+           RAMCPLD      64
+
+IOW        IDECONNECTOR 23
+           RAMCPLD      63
+
+IPL0       CONN1        PIN83
+           MUXCPLD      28
+
+IPL1       CONN1        PIN82
+           MUXCPLD      27
+
+IPL2       CONN1        PIN81
+           MUXCPLD      23
+
+JMP        JMP          2
+           MUXCPLD      39
+
+PUNT       CONN1        PIN117
+           RAMCPLD      4
+
+RAMOE      IC1          30
+           IC2          30
+           IC3          30
+           IC4          30
+           RAMCPLD      52
+
+RAM_A0     IC1          18
+           IC2          18
+           IC3          18
+           IC4          18
+           RAMCPLD      50
+
+RAM_A1     IC1          19
+           IC2          19
+           IC3          19
+           IC4          19
+           RAMCPLD      49
+
+RAM_A2     IC1          20
+           IC2          20
+           IC3          20
+           IC4          20
+           MUXCPLD      36
+
+RAM_A3     IC1          21
+           IC2          21
+           IC3          21
+           IC4          21
+           MUXCPLD      37
+
+RAM_A4     IC1          24
+           IC2          24
+           IC3          24
+           IC4          24
+           MUXCPLD      34
+
+RAM_A5     IC1          25
+           IC2          25
+           IC3          25
+           IC4          25
+           MUXCPLD      33
+
+RAM_A6     IC1          26
+           IC2          26
+           IC3          26
+           IC4          26
+           MUXCPLD      32
+
+RAM_A7     IC1          27
+           IC2          27
+           IC3          27
+           IC4          27
+           MUXCPLD      31
+
+RAM_A8     IC1          28
+           IC2          28
+           IC3          28
+           IC4          28
+           MUXCPLD      30
+
+RAM_A9     IC1          29
+           IC2          29
+           IC3          29
+           IC4          29
+           MUXCPLD      29
+
+RAM_MUX    MUXCPLD      38
+           RAMCPLD      38
+
+RAS0       IC1          15
+           IC2          15
+           RAMCPLD      51
+
+RAS1       IC3          15
+           IC4          15
+           RAMCPLD      48
+
+RESET      CONN1        PIN118
+           IDECONNECTOR 1
+           RAMCPLD      62
+
+RW20       CONN1        PIN93
+           IC1          14
+           IC2          14
+           IC3          14
+           IC4          14
+           RAMCPLD      44
+
+SIZ0       CONN1        PIN90
+           RAMCPLD      40
+
+SIZ1       CONN1        PIN89
+           RAMCPLD      39
+
+TCK        JTAG         4
+           MUXCPLD      11
+           RAMCPLD      30
+
+TDI        JTAG         2
+           RAMCPLD      28
+
+TDINT      MUXCPLD      9
+           RAMCPLD      53
+
+TDO        JTAG         3
+           MUXCPLD      24
+
+TMS        JTAG         1
+           MUXCPLD      10
+           RAMCPLD      29
+
+VCC        C10          1
+           C11          1
+           C13          1
+           C14          1
+           C15          1
+           C2           1
+           C3           1
+           C4           1
+           C5           1
+           C6           1
+           C8           1
+           C9           1
+           CONN1        PIN10
+           CONN1        PIN102
+           CONN1        PIN146
+           CONN1        PIN156
+           CONN1        PIN176
+           CONN1        PIN20
+           CONN1        PIN50
+           CONN1        PIN60
+           CONN1        PIN70
+           CONN1        PIN80
+           IC1          1
+           IC1          22
+           IC1          6
+           IC2          1
+           IC2          22
+           IC2          6
+           IC3          1
+           IC3          22
+           IC3          6
+           IC4          1
+           IC4          22
+           IC4          6
+           IC5          3
+           IC9          5
+           IDECONNECTOR 41
+           IDECONNECTOR 42
+           PWR1         2
+           R1           1
+
+VCC33      C1           1
+           C12          1
+           C16          1
+           C7           1
+           IC5          2
+           IC5          4
+           JMP          1
+           JTAG         6
+           MUXCPLD      15
+           MUXCPLD      26
+           MUXCPLD      35
+           RAMCPLD      26
+           RAMCPLD      3
+           RAMCPLD      37
+           RAMCPLD      55
 

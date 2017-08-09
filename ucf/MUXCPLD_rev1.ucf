@@ -1,0 +1,49 @@
+# Copyright (C) 2016-2017, Stephen J. Leary
+# All rights reserved.
+#
+# This file is part of TF530 (Terrible Fire 030 Accelerator)
+#
+# TF530 is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# TF530 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with TF530. If not, see <http://www.gnu.org/licenses/>.
+
+NET "A<3>"      LOC="22";
+NET "A<4>"      LOC="21";
+NET "A<5>"      LOC="20";
+NET "A<6>"      LOC="19";
+NET "A<7>"      LOC="18";
+NET "A<8>"      LOC="16";
+NET "A<9>"      LOC="14";
+NET "A<10>"      LOC="13";
+NET "A<11>"      LOC="12";
+NET "A<12>"      LOC="8";
+NET "A<13>"      LOC="6";
+NET "A<14>"      LOC="7";
+NET "A<15>"      LOC="5";
+NET "A<16>"      LOC="3";
+NET "A<17>"      LOC="2";
+NET "A<18>"      LOC="1";
+NET "A<19>"      LOC="43";
+NET "CLKCPU"      LOC="44";
+NET "IPL<0>"      LOC="28";
+NET "IPL<1>"      LOC="27";
+NET "IPL<2>"      LOC="23";
+NET "JMP"      LOC="39";
+NET "RAM_A<2>"      LOC="36";
+NET "RAM_A<3>"      LOC="37";
+NET "RAM_A<4>"      LOC="34";
+NET "RAM_A<5>"      LOC="33";
+NET "RAM_A<6>"      LOC="32";
+NET "RAM_A<7>"      LOC="31";
+NET "RAM_A<8>"      LOC="30";
+NET "RAM_A<9>"      LOC="29";
+NET "RAM_MUX"      LOC="38";
