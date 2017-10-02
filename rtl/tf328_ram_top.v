@@ -66,10 +66,11 @@ wire GAYLE_REGS = (A[23:15] != {8'hDA, 1'b1});
 
 wire GAYLE_ID= (A[23:15] != {8'hDE, 1'b0});
 wire GAYLE_ACCESS = (GAYLE_ID & GAYLE_REGS) | AS20;
-wire TEST_ACCESS = ({A[23:16]} != {8'hE9}) | AS20;
+
+reg [2:0] POR = 3'b111;
 
 wire gayle_dout;
-
+   
 gayle GAYLE(
 
     .CLKCPU ( CLKCPU        ),
@@ -91,7 +92,7 @@ reg AS20_D2 = 1'b1;
 fastmem FASTRAM( 
 					
 					.CLKCPU	(	CLKCPU	),
-					.RESET	(	RESET		),
+					.RESET	(	RESET & ~POR[2]	),
 					.AS20		(	AS20     ),
 					.DS20		(  DS20		),
 					.RW20		(  RW20		),
@@ -134,6 +135,22 @@ FDCP #(.INIT(1'b1))
 reg ds_d;
 reg [7:0] test_reg = 'd0;
 
+always @(posedge CLKCPU or negedge RESET) begin	
+
+   if (RESET == 1'b0) begin
+
+      POR <= 'hF;
+
+   end else begin
+
+      // shift until all 0's
+      // this will not happen if there isnt a clock
+      POR[2:0] <= {POR[1:0], 1'b0};
+      
+   end
+
+end
+ 
 always @(posedge CLKCPU) begin	
 	
 	 ds_d <= DS20;
@@ -143,15 +160,6 @@ always @(posedge CLKCPU) begin
 	 GAYLE_IDE_D <= GAYLE_IDE;
     intcycle_dout <= (~GAYLE_ACCESS) & RW20;
 	 
-	 if ((TEST_ACCESS | DS20 | ~ds_d) == 1'b0) begin
-		
-		if (RW20) begin 
-			test_reg <= test_reg + 'd1;
-		end else begin 
-			test_reg <= 8'h70;
-		end
-	 end
-
 end
 
 FDCP #(.INIT(1'b1)) 
@@ -172,13 +180,13 @@ FDCP #(.INIT(1'b1))
 		.PRE(AS20) // Asynchronous set input
 );
 
-assign PUNT = GAYLE_ACCESS & GAYLE_IDE & TEST_ACCESS & RAM_ACCESS & Z2_ACCESS  ? 1'bz : 1'b0;
+assign PUNT = POR[2] | GAYLE_ACCESS & GAYLE_IDE & RAM_ACCESS & Z2_ACCESS  ? 1'bz : 1'b0;
 assign IDECS = A[12] ? {GAYLE_IDE, 1'b1} : {1'b1, GAYLE_IDE}; 
 
 assign INT2 = GAYLE_INT2 ? 1'b0 : 1'bz;
 wire [7:4] data_out = GAYLE_ACCESS ? 4'b1111 : {gayle_dout,3'b000};
 
-assign D[7:0] = TEST_ACCESS ? ((intcycle_dout) ? {data_out[7:4], 4'h0} : 8'bzzzzzzzz) : test_reg;   
+assign D[7:0] = (intcycle_dout) ? {data_out[7:4], 4'h0} : 8'bzzzzzzzz;   
 
 assign DSACK[1] = FASTCYCLE ? 1'bz : 1'b0;
 assign DSACK[0] = (FASTCYCLE | RAM_ACCESS) ? 1'bz : 1'b0;
