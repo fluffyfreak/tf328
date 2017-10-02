@@ -190,7 +190,7 @@ FDCP #(.INIT(1'b1))
 		.PRE(AS20) // Asynchronous set input
 );
 
-assign PUNT = POR[2] & GAYLE_ACCESS & GAYLE_IDE & TEST_ACCESS & RAM_ACCESS & Z2_ACCESS  ? 1'bz : 1'b0;
+assign PUNT = POR[2] | GAYLE_ACCESS & GAYLE_IDE & TEST_ACCESS & RAM_ACCESS & Z2_ACCESS  ? 1'bz : 1'b0;
 assign IDECS = A[12] ? {GAYLE_IDE, 1'b1} : {1'b1, GAYLE_IDE}; 
 
 assign INT2 = GAYLE_INT2 ? 1'b0 : 1'bz;
