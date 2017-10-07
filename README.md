@@ -2,7 +2,10 @@
 
 An 8mb Fast RAM + IDE Board for the CD32.
 
-WARNING: This board is beta. It has not been verified at time of commiting. 
+Known Issues: 
+
+1. The machine is unstable with HY511816BTC RAM.
+2. Your CF Card MUST be 3.3/5V tolerant as some of the control signals are 3.3V.
 
 A prototype version was built and this contains all the lessons learned from that prototype. 
 
