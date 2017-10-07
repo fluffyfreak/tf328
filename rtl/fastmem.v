@@ -1,3 +1,4 @@
+
 `timescale 1ns / 1ps
 
 /*
@@ -37,7 +38,7 @@ module fastmem(
 
            // ram chip control
            output reg 	    RAM_MUX,
-           output reg 	    RAMOE,
+           output  	    RAMOE,
            output reg [3:0] CAS,
            output reg [1:0] RAS,
            output [1:0]     RAM_A,
@@ -105,7 +106,7 @@ assign bank[2] = A[23:21] != 3'b011; // $600000
 assign bank[3] = A[23:21] != 3'b100; // $800000
 
 wire [1:0] chip_ras = {&bank[3:2], &bank[1:0]};
-wire chip_selected = &chip_ras[1:0] | configured;
+wire chip_selected = &chip_ras[1:0] | ~configured;
 
 wire [3:0] casint;
 assign casint[3] = A[1] | A[0];
@@ -187,7 +188,8 @@ always @(posedge CLKCPU, posedge AS20) begin
 	 end
 	 
 	 CYCLE_CAS: begin
-
+	    
+	    WAIT <= 1'b0;
 	    CAS[0] <= casint[0] & ~RW20;
 	    CAS[1] <= casint[1] & ~RW20;
 	    CAS[2] <= casint[2] & ~RW20;
@@ -199,7 +201,6 @@ always @(posedge CLKCPU, posedge AS20) begin
 	 CYCLE_WAIT: begin
 	    
 	    // cycle is ended by disasserting AS20.
-	    WAIT <= 1'b0;
 	    state <= CYCLE_WAIT;
 	 
 	 end
@@ -250,5 +251,6 @@ end
 assign D = Z2_READ ? 8'bzzzzzzzz : {data_out,4'bzzzz};
 assign RAM_ACCESS = (AS20 | chip_selected);
 assign Z2_ACCESS = ({A[23:16]} != {8'hE8}) | AS20 | DS20 | configured | shutup;
-   
+assign ROMOE = 1'b0;
+      
 endmodule
