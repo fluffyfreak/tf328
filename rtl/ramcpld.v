@@ -21,7 +21,7 @@
 */
 
 
-module tf528_ram_top(
+module ramcpld(
 
 		input	CLKCPU,
 		input	RESET,
@@ -32,7 +32,7 @@ module tf528_ram_top(
 		input [1:0] SIZ,
 		
 		input   IDEINT,
-      output  INT2,
+		output  INT2,
         
 		input 	AS20,
 		input		RW20,
@@ -79,11 +79,11 @@ gayle GAYLE(
     .DS     ( DS20  | GAYLE_ACCESS       ),
     .RW     ( RW20          ),
     .A18    ( A[18]         ),
-    .A      ( {A[13:12]}	 ),
+    .A      ( {A[13:12]}	),
     .IDE_INT( IDEINT        ),
     .INT2   ( GAYLE_INT2    ),
-    .D7	   ( D[7]	       ),
-	 .DOUT7	( gayle_dout  	 )
+    .D7	    ( D[7]	        ),
+	.DOUT7	( gayle_dout  	 )
 
 );
 reg AS20_D = 1'b1;
@@ -91,49 +91,57 @@ reg AS20_D2 = 1'b1;
 
 fastmem FASTRAM( 
 					
-					.CLKCPU	(	CLKCPU	),
-					.RESET	(	RESET & ~POR[2]	),
-					.AS20		(	AS20     ),
-					.DS20		(  DS20		),
-					.RW20		(  RW20		),
+					.CLKCPU		( CLKCPU	),
+					.RESET		( RESET & ~POR[2]	),
+					.AS20		( AS20     ),
+					.DS20		( DS20		),
+					.RW20		( RW20		),
         
-					.A			(	A			), 
-					.D			(	D			),
-					.SIZ		(  SIZ		),
+					.A			( A			), 
+					.D			( D			),
+					.SIZ		( SIZ		),
 			
-					.CAS		(  CAS		),
-					.RAS		(  RAS		),
+					.CAS		( CAS		),
+					.RAS		( RAS		),
 					
-					.RAM_MUX ( 	RAM_MUX	),
-					.RAMOE 	( 	RAMOE		),
-					.RAM_A 	( 	RAM_A		),
-					.RAM_ACCESS (RAM_ACCESS),
+					.RAM_MUX 	( RAM_MUX	),
+					.RAMOE 		( RAMOE		),
+					.RAM_A 		( RAM_A		),
+					.RAM_ACCESS ( RAM_ACCESS),
 					
-					.Z2_ACCESS (Z2_ACCESS)
+					.Z2_ACCESS 	( Z2_ACCESS	),
+					.WAIT		( RAM_WAIT )
 					
                );
 
 reg intcycle_dout = 1'b0;
 
-reg GAYLE_IDE_D = 1'b1;
+reg GAYLE_D  = 1'b1;
+reg GAYLE_D2 = 1'b1;
 
 wire DSHOLD2 = {AS20_D,AS20, RW20} == {1'b1,1'b0,1'b0};
 wire IOR_INT = ~RW20 | GAYLE_IDE | DSHOLD2;
 wire IOW_INT = RW20 | GAYLE_IDE | DSHOLD2; 
 
-wire fastcycle_int = AS20_D | AS20_D2 | ((PUNT & GAYLE_IDE_D)| AS20);
+wire fastcycle_int =   (RAM_ACCESS | RAM_WAIT) & GAYLE_D2 & Z2_ACCESS & GAYLE_ACCESS & GAYLE_IDE;
 	
 FDCP #(.INIT(1'b1)) 
-	FASTCYCLE_FF (
-		.Q(FASTCYCLE), // Data output
+	FASTCYCLE1_FF (
+		.Q(FASTCYCLE1), // Data output
 		.C(CLKCPU), // Clock input
 		.CLR(1'b0), // Asynchronous clear input
 		.D(fastcycle_int), // Data input
 		.PRE(AS20) // Asynchronous set input
 );
 
-reg ds_d;
-reg [7:0] test_reg = 'd0;
+FDCP #(.INIT(1'b1)) 
+	FASTCYCLE0_FF (
+		.Q(FASTCYCLE0), // Data output
+		.C(CLKCPU), // Clock input
+		.CLR(1'b0), // Asynchronous clear input
+		.D(fastcycle_int | RAM_ACCESS), // Data input
+		.PRE(AS20) // Asynchronous set input
+);
 
 always @(posedge CLKCPU or negedge RESET) begin	
 
@@ -151,14 +159,28 @@ always @(posedge CLKCPU or negedge RESET) begin
 
 end
  
-always @(posedge CLKCPU) begin	
+always @(posedge CLKCPU or posedge AS20) begin	
 	
-	 ds_d <= DS20;
-	 AS20_D <= AS20;
-	 AS20_D2 <= AS20_D;
-	 
-	 GAYLE_IDE_D <= GAYLE_IDE;
-    intcycle_dout <= (~GAYLE_ACCESS) & RW20;
+	 if (AS20 == 1'b1) begin 
+
+		AS20_D <= 1'b1;
+		AS20_D2 <= 1'b1;
+		GAYLE_D <= 1'b1;
+		GAYLE_D2 <= 1'b1;
+		
+	end else begin 
+
+		intcycle_dout <= (~GAYLE_ACCESS) & RW20;
+		AS20_D <= AS20;
+		AS20_D2 <= AS20_D;
+		GAYLE_D2 <= GAYLE_D;
+		
+		if (GAYLE_IDE == 1'b0) begin 
+			
+			GAYLE_D <= 1'b0;
+		
+		end
+	end
 	 
 end
 
@@ -188,7 +210,9 @@ wire [7:4] data_out = GAYLE_ACCESS ? 4'b1111 : {gayle_dout,3'b000};
 
 assign D[7:0] = (intcycle_dout) ? {data_out[7:4], 4'h0} : 8'bzzzzzzzz;   
 
-assign DSACK[1] = FASTCYCLE ? 1'bz : 1'b0;
-assign DSACK[0] = (FASTCYCLE | RAM_ACCESS) ? 1'bz : 1'b0;
+assign DSACK[1] = FASTCYCLE1 ? 1'bz : 1'b0;
+assign DSACK[0] = FASTCYCLE0 ? 1'bz : 1'b0;
 
 endmodule
+
+

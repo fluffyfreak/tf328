@@ -1,0 +1,106 @@
+    task write;
+  input [31:0] addr;
+  input [31:0] data;
+   begin
+     
+     wait(CLK);
+     D_OUT = data;
+     RW20 = 1'b0;
+     AS20 = 1'b1;
+     DS20 = 1'b1;
+
+     wait(~CLK);
+     
+     A = addr;
+     AS20 = 1'b0;
+
+     wait(CLK);
+     wait(~CLK);
+
+     DS20 = 1'b0;
+
+     wait(CLK);
+     wait(~CLK);
+
+     wait(CLK);
+     wait(~CLK);
+
+     wait(CLK);
+
+     while (&DSACK == 1) begin 
+
+       	wait(CLK);
+        wait(~CLK);
+
+     end
+
+     RW20 = 1'b1;
+     AS20 = 1'b1;
+     DS20 = 1'b1;     
+
+      
+  end
+  endtask	
+
+
+  task read;
+  input [31:0] addr; 
+   begin
+      
+     wait(CLK);
+     RW20 = 1'b1;
+     AS20 = 1'b1;
+     DS20 = 1'b1;
+     SIZ  = 1'b0;
+
+     wait(~CLK);
+     
+     A = addr;
+     AS20 = 1'b0;
+
+     wait(CLK);
+     wait(~CLK);
+
+     DS20 = 1'b0;
+
+     wait(CLK);
+     wait(~CLK);
+
+     wait(CLK);
+
+     while (&DSACK == 1) begin 
+
+       	wait(CLK);
+        wait(~CLK);
+
+     end
+
+     RW20 = 1'b1;
+     AS20 = 1'b1;
+     DS20 = 1'b1;     
+
+       end
+  endtask	
+
+
+
+
+task busidle;
+begin
+     RW20 = 1'b1;
+     AS20 = 1'b1;
+     DS20 = 1'b1;
+     SIZ = 2'b11;
+end
+endtask
+
+task assert;
+input [31:0] expected;
+input [31:0] actual;
+begin
+ if (expected !== actual) begin
+   $display("ASSERT Failed: expected %b, actual %b", expected, actual);
+   //$finish;
+ end
+end
+endtask
