@@ -24,6 +24,20 @@
 
      wait(CLK);
      wait(~CLK);
+
+     wait(CLK);
+
+     while (&DSACK == 1) begin 
+
+       	wait(CLK);
+        wait(~CLK);
+
+     end
+
+     RW20 = 1'b1;
+     AS20 = 1'b1;
+     DS20 = 1'b1;     
+
       
   end
   endtask	

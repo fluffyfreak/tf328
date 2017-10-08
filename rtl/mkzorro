@@ -40,7 +40,7 @@ def ramConfig(size):
     global address
     address = 0
     eType = versions["Z2"] | sizes[size] | memavailable
-    eProduct = 0x01
+    eProduct = 0x328
     print "case (zaddr)"
     outByte(eType)
     outByte(eProduct)
@@ -72,5 +72,5 @@ def sdCardConfig():
     print "endcase"
 
 
-ramConfig("4M")
+ramConfig("8M")
 #sdCardConfig()

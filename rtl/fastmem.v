@@ -80,18 +80,19 @@ always @(negedge DS20 or negedge RESET) begin
         end
 
         case (zaddr)
-            'h00: data_out[7:4] <= 4'he;
-				'h01: data_out[7:4] <= 4'h0;
-				'h03: data_out[7:4] <= 4'hd;
-				'h04: data_out[7:4] <= 4'h7;
-				'h08: data_out[7:4] <= 4'he;
-				'h09: data_out[7:4] <= 4'hc;
-				'h0a: data_out[7:4] <= 4'h2;
-				'h0b: data_out[7:4] <= 4'h7;
-				'h11: data_out[7:4] <= 4'he;
-				'h12: data_out[7:4] <= 4'hb;
-				'h13: data_out[7:4] <= 4'h7;
-            default: data_out[7:4] <= 4'hf;
+	  'h00: data_out[7:4] <= 4'he;
+	  'h01: data_out[7:4] <= 4'h0;
+	  'h02: data_out[7:4] <= 4'hd;
+	  'h03: data_out[7:4] <= 4'h7;
+	  'h04: data_out[7:4] <= 4'h7;
+	  'h08: data_out[7:4] <= 4'he;
+	  'h09: data_out[7:4] <= 4'hc;
+	  'h0a: data_out[7:4] <= 4'h2;
+	  'h0b: data_out[7:4] <= 4'h7;
+	  'h11: data_out[7:4] <= 4'he;
+	  'h12: data_out[7:4] <= 4'hb;
+	  'h13: data_out[7:4] <= 4'h7;
+	  default: data_out[7:4] <= 4'hf;
         endcase
     end
 

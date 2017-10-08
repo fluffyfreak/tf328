@@ -30,10 +30,11 @@ endif
 
 BOARD:=tf328
 # Part number
-PART=XC9572XL-10-VQ64
+#
 
+PROJUP = $(shell echo $(PROJECT) | tr '[:lower:]' '[:upper:]')
 # Constraints file
-UCF=../ucf/RAMCPLD_$(REVISION).ucf
+UCF=../ucf/$(PROJUP)_$(REVISION).ucf
 
 # Path to Xilinx tools, blank if in $PATH, must end in /
 XILINX=/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/
