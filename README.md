@@ -4,8 +4,7 @@ An 8mb Fast RAM + IDE Board for the CD32.
 
 Known Issues: 
 
-1. The machine is unstable with HY511816BTC RAM.
-2. Your CF Card MUST be 3.3/5V tolerant as some of the control signals are 3.3V.
+1. Your CF Card MUST be 3.3/5V tolerant as some of the control signals are 3.3V.
 
 A prototype version was built and this contains all the lessons learned from that prototype. 
 
@@ -39,17 +38,6 @@ Jumper JMP is intended to trigger an NMI. This works via the MUXCPLD which detec
 ## License
 
 This project and all the files contained are released under the GNU GPLv2. If you build a modified version of the board you must supply the end user with all the sources (this can be a web link).
-
-## The TerribleFore 328 board (Revision 1)
-
-Completely untested board link.... use with caution!!!! Do not come crying to me if it didnt work!!
-
-http://dirtypcbs.com/store/designer/details/12476/4714/tf328-rev1-zip
-
-The TF328 CD32 Ram + IDE Board
-
-![Image of Top of PCB](docs/tf328_rev1.jpg)
-
 
 # Bill of Materials
 
