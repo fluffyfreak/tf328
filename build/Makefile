@@ -1,5 +1,5 @@
 BOARD:=tf328
-RAMSOURCES="../rtl/ramcpld.v ../rtl/gayle.v ../rtl/fastmem.v"
+RAMSOURCES="../rtl/ramcpld.v ../rtl/gayle.v ../rtl/fastmem.v ../rtl/ata.v"
 MUXSOURCES="../rtl/muxcpld.v"
 
 all: ram mux
