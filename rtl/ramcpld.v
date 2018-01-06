@@ -59,7 +59,7 @@ module ramcpld(
 wire GAYLE_INT2;
 
 // $DA0000
-wire GAYLE_IDE = ({A[23:15]} != {8'hDA,1'b0}) | AS20;
+wire GAYLE_IDE;
 
 // $DE0000 or $DA8000 (Ignores A18)
 wire GAYLE_REGS = (A[23:15] != {8'hDA, 1'b1});
@@ -86,13 +86,31 @@ gayle GAYLE(
 	.DOUT7	( gayle_dout  	 )
 
 );
+
+// module to control IDE timings. 
+ata ATA (
+
+	.CLK	( CLKCPU	), 
+	.AS	( AS20	),
+	.RW	( RW20	),
+	.A		( A		),
+	.WAIT	( 1'b1   ), 
+	
+	.IDECS( IDECS	),
+	.IOR	( IOR		),
+	.IOW	( IOW		),
+	.DTACK( DTACK_IDE	),
+   .ACCESS( GAYLE_IDE )
+	
+);
+
 reg AS20_D = 1'b1;
 reg AS20_D2 = 1'b1;
 
 fastmem FASTRAM( 
 					
 					.CLKCPU		( CLKCPU	),
-					.RESET		( RESET & ~POR[2]	),
+					.RESET		( RESET),
 					.AS20		( AS20     ),
 					.DS20		( DS20		),
 					.RW20		( RW20		),
@@ -123,7 +141,7 @@ wire DSHOLD2 = {AS20_D,AS20, RW20} == {1'b1,1'b0,1'b0};
 wire IOR_INT = ~RW20 | GAYLE_IDE | DSHOLD2;
 wire IOW_INT = RW20 | GAYLE_IDE | DSHOLD2; 
 
-wire fastcycle_int =   (RAM_ACCESS | RAM_WAIT) & GAYLE_D2 & Z2_ACCESS & GAYLE_ACCESS & GAYLE_IDE;
+wire fastcycle_int =   (RAM_ACCESS | RAM_WAIT) & GAYLE_D2 & Z2_ACCESS & GAYLE_ACCESS & DTACK_IDE;
 	
 FDCP #(.INIT(1'b1)) 
 	FASTCYCLE1_FF (
@@ -143,21 +161,6 @@ FDCP #(.INIT(1'b1))
 		.PRE(AS20) // Asynchronous set input
 );
 
-always @(posedge CLKCPU or negedge RESET) begin	
-
-   if (RESET == 1'b0) begin
-
-      POR <= 'hF;
-
-   end else begin
-
-      // shift until all 0's
-      // this will not happen if there isnt a clock
-      POR[2:0] <= {POR[1:0], 1'b0};
-      
-   end
-
-end
  
 always @(posedge CLKCPU or posedge AS20) begin	
 	
@@ -184,26 +187,7 @@ always @(posedge CLKCPU or posedge AS20) begin
 	 
 end
 
-FDCP #(.INIT(1'b1)) 
-	IOR_FF (
-		.Q(IOR), // Data output
-		.C(CLKCPU), // Clock input
-		.CLR(1'b0), // Asynchronous clear input
-		.D(IOR_INT), // Data input
-		.PRE(AS20) // Asynchronous set input
-);
-
-FDCP #(.INIT(1'b1)) 
-	IOW_FF (
-		.Q(IOW), // Data output
-		.C(CLKCPU), // Clock input
-		.CLR(1'b0), // Asynchronous clear input
-		.D(IOW_INT), // Data input
-		.PRE(AS20) // Asynchronous set input
-);
-
 assign PUNT = POR[2] | GAYLE_ACCESS & GAYLE_IDE & RAM_ACCESS & Z2_ACCESS  ? 1'bz : 1'b0;
-assign IDECS = A[12] ? {GAYLE_IDE, 1'b1} : {1'b1, GAYLE_IDE}; 
 
 assign INT2 = GAYLE_INT2 ? 1'b0 : 1'bz;
 wire [7:4] data_out = GAYLE_ACCESS ? 4'b1111 : {gayle_dout,3'b000};
