@@ -1,11 +1,13 @@
-
 `timescale 1ns / 1ps
 
 /*
-	Copyright (C) 2016-2017, Stephen J. Leary
-	All rights reserved.
-	
-	This file is part of  TF328 (Terrible Fire CD32 RAM + IDE Board).
+    Copyright (C) 2016-2018, Stephen J. Leary
+    Copyright (C) 2017, M Heinrichs
+    Copyright (C) 2017, Chris "SolidCore"
+
+    All rights reserved.
+    
+    This file is part of  TF328 (Terrible Fire CD32 RAM + IDE Board).
 
     TF530 is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,6 +21,16 @@
 
     You should have received a copy of the GNU General Public License
     along with TF530. If not, see <http://www.gnu.org/licenses/>.
+     
+     # Additional Credits # 
+     
+     Thank you MHeinrichs for the 0ws firmware, I took the time to write a fix
+     for her for Alliance ram /others.
+     
+     Special thanks to Supaduper who has been a great help for all my amiga needs! Thank you sir!
+     And a big thank you Steve from all of us at EAB appreciate your hard work! Keep on going 
+
+     - SolidCore 15.10.2017  
 */
 
 
@@ -38,14 +50,14 @@ module fastmem(
 
            // ram chip control
            output reg 	    RAM_MUX,
-           output  	    RAMOE,
+           output reg 	    RAMOE,
            output reg [3:0] CAS,
            output reg [1:0] RAS,
-           output [1:0]     RAM_A,
+           output [1:0]    RAM_A,
 
            output 	    RAM_ACCESS,
-	   output 	    Z2_ACCESS,
-	   output reg	    WAIT
+           output	reg RAM_READY,
+           output		Z2_ACCESS
 
        );
 
@@ -79,24 +91,23 @@ always @(negedge DS20 or negedge RESET) begin
                 'h26: shutup <= 1'b1;
             endcase
         end
-
+        
         case (zaddr)
-	  'h00: data_out[7:4] <= 4'he;
-	  'h01: data_out[7:4] <= 4'h0;
-	  'h02: data_out[7:4] <= 4'hd;
-	  'h03: data_out[7:4] <= 4'h7;
-	  'h04: data_out[7:4] <= 4'h7;
-	  'h08: data_out[7:4] <= 4'he;
-	  'h09: data_out[7:4] <= 4'hc;
-	  'h0a: data_out[7:4] <= 4'h2;
-	  'h0b: data_out[7:4] <= 4'h7;
-	  'h11: data_out[7:4] <= 4'he;
-	  'h12: data_out[7:4] <= 4'hb;
-	  'h13: data_out[7:4] <= 4'h7;
-	  default: data_out[7:4] <= 4'hf;
+            'h00: data_out[7:4] <= 4'he;
+            'h01: data_out[7:4] <= 4'h0;
+            'h02: data_out[7:4] <= 4'hd;
+            'h03: data_out[7:4] <= 4'h6;
+            'h04: data_out[7:4] <= 4'h7;
+            'h08: data_out[7:4] <= 4'he;
+            'h09: data_out[7:4] <= 4'hc;
+            'h0a: data_out[7:4] <= 4'h2;
+            'h0b: data_out[7:4] <= 4'h7;
+            'h11: data_out[7:4] <= 4'he;
+            'h12: data_out[7:4] <= 4'hb;
+            'h13: data_out[7:4] <= 4'h7;
+            default: data_out[7:4] <= 4'hf;
         endcase
     end
-
 end
 
 // zorro II chip bank decoder.
@@ -118,140 +129,100 @@ assign casint[0] = (~SIZ[1] & SIZ[0] & ~A[1] ) | (~SIZ[1] & SIZ[0] & ~A[0] ) | (
 assign RAM_A =  RAM_MUX ? {A[21:20]} : {A[3:2]} ;
 
 reg 	  AS20_D; 
-reg [3:0] state = 'd0;
+reg [2:0] state = 'd0;
 reg [7:0] refresh_count ='d0;
-reg 	  refresh_req  ='d0;
-   
+reg 	  refresh_req  ='d0;  
 reg [3:0] startup_count ='d0;
-	  
+      
 localparam CYCLE_IDLE = 'd0,
-           CYCLE_RAS = 'd1,
-           CYCLE_CAS = 'd3,
-           CYCLE_WAIT = 'd4,
-           CYCLE_CBR1 = 'd8,
-           CYCLE_CBR2 = 'd9,
-           CYCLE_CBR3 = 'd10;
-   		     
+       CYCLE_CAS = 'd1,
+           CYCLE_WAIT = 'd2,
+           CYCLE_CBR1 = 'd3,
+           CYCLE_CBR2 = 'd4;
+             
 // ram state machine
 always @(posedge CLKCPU, posedge AS20) begin
 
-    if( AS20 == 1 ) begin
-       
+    if( AS20 == 1 ) begin       
        state <= CYCLE_IDLE;
-       AS20_D <= 1'b1;
-       
+       AS20_D <= 1'b1;     
        RAS <= 2'b11;
        CAS <= 4'b1111;
-       WAIT <= 1'b1;
-       
+       RAM_READY <= 1'b1;
+       RAMOE <= 1'b1;
+        
     end else begin
-
-       AS20_D <= AS20;
-       
+       AS20_D <= AS20; 
        case (state)
-				
-	 CYCLE_IDLE: begin 
+                
+     CYCLE_IDLE: begin 
+        RAS <= 2'b11;
+        CAS <= 4'b1111;
 
-	    RAS <= 2'b11;
-	    CAS <= 4'b1111;
-	    
-	    if (AS20_D & ~AS20) begin 
-	       
-	       refresh_count <= refresh_count + 'd1;
-
-	    end
-	       
-	    if (refresh_count > 'd220) begin
-
-	       refresh_req <= 1'b1;
-	       refresh_count <= 'd0;
-	       
-	    end
-		
-	    if (refresh_req & RW20) begin 
-	       
-	       state <= CYCLE_CBR1;
-	       
-	    end else if (chip_selected == 1'b0) begin
-
-	       state <= CYCLE_RAS;
-	     
-	    end
-
-	 end
-
-	 CYCLE_RAS: begin
-	    
-	    RAS[0] <= chip_ras[0];
-	    RAS[1] <= chip_ras[1];
-	    state <= CYCLE_CAS;
-	 
-	 end
-	 
-	 CYCLE_CAS: begin
-	    
-	    WAIT <= 1'b0;
-	    CAS[0] <= casint[0] & ~RW20;
-	    CAS[1] <= casint[1] & ~RW20;
-	    CAS[2] <= casint[2] & ~RW20;
-	    CAS[3] <= casint[3] & ~RW20; 
-	    state <= CYCLE_WAIT;
-	 
-	 end
-	 
-	 CYCLE_WAIT: begin
-	    
-	    // cycle is ended by disasserting AS20.
-	    state <= CYCLE_WAIT;
-	 
-	 end
-	 
-	 CYCLE_CBR1: begin 
-	 
-	    CAS <= 'b0000;
-	    state <= CYCLE_CBR2;
-	    refresh_req <= 1'b0;
-	 
-	 end
-	 
-	 CYCLE_CBR2: begin
-	    RAS <= 'b00;
-	    state <= CYCLE_CBR3;
-	 end
-	 
-	 CYCLE_CBR3: begin    
-	    CAS <= 'b1111;
-	    RAS <= 'b11;
-	    
-	    state <= CYCLE_IDLE;
-	 end
-	 
-	 default: state <= CYCLE_IDLE;
-
+        if (AS20_D & ~AS20) begin 	       
+           refresh_count <= refresh_count + 'd1;
+        end
+           
+        if (refresh_count > 'd60) begin
+           refresh_req <= 1;
+           refresh_count <= 'd0; 
+        end
+        
+        if (refresh_req & RW20) begin 
+        CAS <= 4'b0000;
+        state <= CYCLE_CBR1;
+        refresh_req <= 1'b0;  
+            
+        end else if (chip_selected == 1'b0) begin
+        RAS[0] <= chip_ras[0];
+        RAS[1] <= chip_ras[1];	
+        RAM_READY <= 1'b0;
+        state <= CYCLE_CAS;
+        RAMOE <=  1'b0;
+        end
+     end
+           
+     CYCLE_CAS: begin
+        CAS[3] <= casint[3] & ~RW20;
+            CAS[2] <= casint[2] & ~RW20;
+            CAS[1] <= casint[1] & ~RW20;
+            CAS[0] <= casint[0] & ~RW20;
+        RAM_READY <= 1'b0;
+        state <= CYCLE_WAIT; 
+     end
+           
+     CYCLE_WAIT: begin  		 		
+        state <= CYCLE_WAIT;
+     end
+         
+     CYCLE_CBR1: begin
+        RAS <= 2'b00;		 
+        state <= CYCLE_CBR2;
+     end
+     
+     CYCLE_CBR2: begin   
+        RAS <= 2'b11;	  
+        CAS <= 4'b1111;
+        state <= CYCLE_IDLE;
+     end
+     
+     default: state <= CYCLE_IDLE;
        endcase // case (state)
     end // else: !if( AS20 == 1 )
 end
-	       
-always @(negedge CLKCPU) begin
-
- 	 // ram address mux
-	 // start with RAM_MUX = 1
-    if( &RAS == 1) begin // reset on no access_ras
-
-        RAM_MUX <= 0;
-
-    end else begin 
-	 
-	     // change to 1 on negedge of clock when access_ras is asserted.
-        RAM_MUX <= 1;
-
+           
+always @(negedge CLKCPU or posedge AS20) begin
+     // ram address mux
+     if(AS20==1)begin
+            RAM_MUX <= 1'b1;
+         
+     end else begin 
+          RAM_MUX <= &RAS;			  
     end
-
 end
 
 assign D = Z2_READ ? 8'bzzzzzzzz : {data_out,4'bzzzz};
 assign RAM_ACCESS = (AS20 | chip_selected);
 assign Z2_ACCESS = ({A[23:16]} != {8'hE8}) | AS20 | DS20 | configured | shutup;
-assign ROMOE = 1'b0;
-      
+
 endmodule
