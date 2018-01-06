@@ -57,9 +57,7 @@ module ramcpld(
 
 // produce an internal data strobe
 wire GAYLE_INT2;
-
-// $DA0000
-wire GAYLE_IDE = ({A[23:15]} != {8'hDA,1'b0}) | AS20;
+wire GAYLE_IDE;
 
 // $DE0000 or $DA8000 (Ignores A18)
 wire GAYLE_REGS = (A[23:15] != {8'hDA, 1'b1});
@@ -70,6 +68,24 @@ wire GAYLE_ACCESS = (GAYLE_ID & GAYLE_REGS) | AS20;
 reg [2:0] POR = 3'b111;
 
 wire gayle_dout;
+
+// module to control IDE timings. 
+ata ATA (
+
+	.CLK	( CLKCPU	), 
+	.AS	( AS20	),
+	.RW	( RW20	),
+	.A		( A		),
+	// IDEWait not connected on TF328.
+	.WAIT	( 1'b1	),  
+	
+	.IDECS( IDECS	),
+	.IOR	( IOR		),
+	.IOW	( IOW		),
+	.DTACK( DTACK_IDE	),
+   .ACCESS( GAYLE_IDE )
+	
+);
    
 gayle GAYLE(
 
@@ -113,29 +129,8 @@ fastmem FASTRAM(
 
 reg intcycle_dout = 1'b0;
 
-reg GAYLE_IDE_D = 1'b1;
-
-assign IOR = ~RW20 | GAYLE_IDE;
-assign IOW =  RW20 | GAYLE_IDE;
-
-wire fastcycle_int = GAYLE_ACCESS & GAYLE_IDE & Z2_ACCESS;// & GAYLE_IDE_D;
+wire fastcycle_int = GAYLE_ACCESS & Z2_ACCESS;
 wire FASTCYCLE = fastcycle_int | AS20;
-
-//reg FASTCYCLE;
-//always @(posedge CLKCPU or posedge AS20) begin	
-//
-//   if (AS20 == 1) begin
-//      FASTCYCLE <= 1;
-//		  IOR <= 1;
-//      IOW <= 1;
-//   end else begin
-//      FASTCYCLE <= fastcycle_int;      
-//      IOR <= ~RW20 | GAYLE_IDE;
-//      IOW <=  RW20 | GAYLE_IDE;
-//   end
-//end
-
-reg [7:0] test_reg = 'd0;
 
 always @(posedge CLKCPU or negedge RESET) begin	
 
@@ -154,19 +149,17 @@ always @(posedge CLKCPU or negedge RESET) begin
 end
  
 always @(posedge CLKCPU) begin	
-	 GAYLE_IDE_D <= GAYLE_IDE;
     intcycle_dout <= (~GAYLE_ACCESS) & RW20; 
 end
 
 assign PUNT = POR[2] | GAYLE_ACCESS & GAYLE_IDE & RAM_ACCESS & Z2_ACCESS  ? 1'bz : 1'b0;
-assign IDECS = A[12] ? {GAYLE_IDE, 1'b1} : {1'b1, GAYLE_IDE}; 
 
 assign INT2 = GAYLE_INT2 ? 1'b0 : 1'bz;
 wire [7:4] data_out = GAYLE_ACCESS ? 4'b1111 : {gayle_dout,3'b000};
 
 assign D[7:0] = (intcycle_dout) ? {data_out[7:4], 4'h0} : 8'bzzzzzzzz;   
 
-assign DSACK[1] = FASTCYCLE  & RAM_READY ? 1'bz : 1'b0;
+assign DSACK[1] = FASTCYCLE  & RAM_READY & DTACK_IDE ? 1'bz : 1'b0;
 assign DSACK[0] = RAM_READY? 1'bz : 1'b0;
 
 endmodule
