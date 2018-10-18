@@ -95,8 +95,8 @@ always @(negedge DS20 or negedge RESET) begin
         case (zaddr)
             'h00: data_out[7:4] <= 4'he;
             'h01: data_out[7:4] <= 4'h0;
-            'h02: data_out[7:4] <= 4'hd;
-            'h03: data_out[7:4] <= 4'h6;
+            'h02: data_out[7:4] <= 4'hb;
+            'h03: data_out[7:4] <= 4'hd;
             'h04: data_out[7:4] <= 4'h7;
             'h08: data_out[7:4] <= 4'he;
             'h09: data_out[7:4] <= 4'hc;
